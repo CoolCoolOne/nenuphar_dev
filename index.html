@@ -33,22 +33,51 @@
     <script>
         const data = {
             labels: [
-                'Вакансии',
-                'Афиша',
-                'Ищу соседа'
+                'Сдаю',
+                'Место для работы',
+                'Дом',
+                'Путешествия',
+                'Сниму',
+                'коливинг',
+                'попутчики',
+                'Психология',
+                'Творчество',
+                'телесные практики',
+                'Саморазвитие',
+                'блог'
             ],
             datasets: [{
                 label: ' ',
                 data: [
-                    { tag: 'Вакансии', url: 'https://github.com/CoolCoolOne', amount: { persent: 50 } },
-                    { tag: 'Афиша', url: 'https://we-are-talking.bandcamp.com/', amount: { persent: 20 } },
-                    { tag: 'Ищу соседа', url: 'https://www.youtube.com/channel/UCkSAiLDUNNzD0ub4frKriEQ', amount: { persent: 30 } }],
+                    { tag: 'Сдаю', url: 'https://github.com/CoolCoolOne', amount: { persent: 50 } },
+                    { tag: 'Место для работы', url: 'https://we-are-talking.bandcamp.com/', amount: { persent: 20 } },
+                    { tag: 'Дом', url: 'https://www.youtube.com/channel/UCkSAiLDUNNzD0ub4frKriEQ', amount: { persent: 30 } },
+                    { tag: 'Путешествия', url: 'https://github.com/CoolCoolOne', amount: { persent: 40 } },
+                    { tag: 'Сниму', url: 'https://github.com/CoolCoolOne', amount: { persent: 160 } },
+                    { tag: 'коливинг', url: 'https://github.com/CoolCoolOne', amount: { persent: 10 } },
+                    { tag: 'попутчики', url: 'https://github.com/CoolCoolOne', amount: { persent: 70 } },
+                    { tag: 'Психология', url: 'https://github.com/CoolCoolOne', amount: { persent: 20 } },
+                    { tag: 'Творчество', url: 'https://github.com/CoolCoolOne', amount: { persent: 22 } },
+                    { tag: 'телесные практики', url: 'https://github.com/CoolCoolOne', amount: { persent: 45 } },
+                    { tag: 'Саморазвитие', url: 'https://github.com/CoolCoolOne', amount: { persent: 59 } },
+                    { tag: 'блог', url: 'https://github.com/CoolCoolOne', amount: { persent: 120 } }],
+
                 backgroundColor: [
-                    'rgb(50, 205, 50)',
-                    'rgb(0, 255, 0)',
-                    'rgb(144, 238, 144)'
+                    'rgba(0, 100, 0, 0.5)',
+                    'rgba(0, 110, 0,0.5)',
+                    'rgba(0, 120, 0,0.5)',
+                    'rgba(0, 90, 0,0.5)'
                 ],
-                hoverOffset: 10
+                borderColor: [
+                    'rgba(0, 100, 0, 1)',
+                    'rgba(0, 110, 0,1)',
+                    'rgba(0, 120, 0,1)',
+                    'rgba(0, 90, 0,1)'
+                ],
+                borderWidth: 2,
+                offset: 5,
+                hoverOffset: 20,
+                borderRadius: 4
             }]
         };
         // легенда и конфиги
@@ -63,7 +92,8 @@
                     legend: {
                         display: false,
                     }
-                }
+                },
+                aspectRatio: 1
             }
         };
 
@@ -91,9 +121,9 @@
     <style>
         .chartBox_m {
             /*max-width: 150px;*/
-            padding: 15px;
-            border-radius: 50%;
-            border: solid 5px rgb(27, 129, 43);
+            padding: 25px;
+            /* border-radius: 50%; */
+            /* border: solid 5px rgb(27, 129, 43); */
             /*background: rgb(177, 204, 230);*/
         }
 
@@ -106,12 +136,22 @@
             /*align-items: center;*/
             /*justify-content: center;*/
         }
+
+        .canvas_m {
+            /* padding: 10px; */
+            /*width: 100vw;*/
+            height: 300px;
+            /* background: rgba(54, 162, 235, 0.2); */
+            /*display: flex;*/
+            /*align-items: center;*/
+            /*justify-content: center;*/
+        }
     </style>
 
     <!-- // выделяем место под диаграмму -->
     <div class="chartCard_m">
         <div class="chartBox_m">
-            <canvas id="SunChart_m"></canvas>
+            <canvas class="canvas_m" id="SunChart_m"></canvas>
         </div>
     </div>
 
@@ -130,11 +170,26 @@
                 parsing: {
                     key: 'amount.persent'
                 },
+                // aspectRatio: 2,
                 plugins: {
                     legend: {
                         display: false,
                     },
                     datalabels: {
+                        anchor: 'center',
+                        display: 'auto',
+                        backgroundColor: function (context) {
+                            return context.dataset.backgroundColor;
+                        },
+                        // borderColor: 'black',
+                        borderRadius: 10,
+                        borderWidth: 0,
+                        color: 'white',
+                        font: {
+                            // weight: 'bold',
+                            size: 13,
+                            family: "Montserrat"
+                        },
                         formatter: ((context, args) => {
                             const slIndex = args.dataIndex;
                             return args.dataset.data[slIndex].tag;
