@@ -42,7 +42,7 @@
                 'попутчики',
                 'Психология',
                 'Творчество',
-                'телесные практики',
+                'йога',
                 'Саморазвитие',
                 'блог'
             ],
@@ -58,26 +58,23 @@
                     { tag: 'попутчики', url: 'https://github.com/CoolCoolOne', amount: { persent: 70 } },
                     { tag: 'Психология', url: 'https://github.com/CoolCoolOne', amount: { persent: 20 } },
                     { tag: 'Творчество', url: 'https://github.com/CoolCoolOne', amount: { persent: 22 } },
-                    { tag: 'телесные практики', url: 'https://github.com/CoolCoolOne', amount: { persent: 45 } },
+                    { tag: 'йога', url: 'https://github.com/CoolCoolOne', amount: { persent: 45 } },
                     { tag: 'Саморазвитие', url: 'https://github.com/CoolCoolOne', amount: { persent: 59 } },
                     { tag: 'блог', url: 'https://github.com/CoolCoolOne', amount: { persent: 120 } }],
 
                 backgroundColor: [
-                    'rgba(0, 100, 0, 0.5)',
-                    'rgba(0, 110, 0,0.5)',
-                    'rgba(0, 120, 0,0.5)',
-                    'rgba(0, 90, 0,0.5)'
+                    'rgba(124, 252, 0, 0.2)',
+                    'rgba(152, 251, 152,0.2)',
+                    'rgba(0, 250, 154,0.3)'
                 ],
                 borderColor: [
-                    'rgba(0, 100, 0, 1)',
-                    'rgba(0, 110, 0,1)',
-                    'rgba(0, 120, 0,1)',
-                    'rgba(0, 90, 0,1)'
+                    'rgba(72, 113, 37, 1)'
                 ],
                 borderWidth: 2,
                 offset: 5,
-                hoverOffset: 20,
-                borderRadius: 4
+                hoverOffset: 15,
+                borderRadius: 4,
+                cutout: '10%'
             }]
         };
         // легенда и конфиги
@@ -178,13 +175,14 @@
                     datalabels: {
                         anchor: 'center',
                         display: 'auto',
-                        backgroundColor: function (context) {
-                            return context.dataset.backgroundColor;
-                        },
+                        // backgroundColor: function (context) {
+                        //     return context.dataset.backgroundColor;
+                        // },
+                        backgroundColor: 'rgba(0, 250, 154,0.6)',
                         // borderColor: 'black',
-                        borderRadius: 10,
+                        borderRadius: 2,
                         borderWidth: 0,
-                        color: 'white',
+                        color: 'black',
                         font: {
                             // weight: 'bold',
                             size: 13,
@@ -199,6 +197,20 @@
             },
             plugins: [ChartDataLabels]
         };
+
+        // const FlowerConfig = {
+        //     type: 'pie',
+        //     data,
+        //     options: {
+        //         parsing: {
+        //             key: 'amount.persent'
+        //         },
+        //         aspectRatio: 3,
+        //         plugins: {
+        //             legend: {
+        //                 display: false,
+        //             }}}
+        // };
 
         // MIBIL CONFIG !!!!! ctx M !!!!
         const ctx_m = document.getElementById('SunChart_m');
