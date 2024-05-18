@@ -71,10 +71,11 @@
                     'rgba(72, 113, 37, 1)'
                 ],
                 borderWidth: 2,
-                offset: 5,
+                offset: 15,
                 hoverOffset: 15,
                 borderRadius: 4,
-                cutout: '10%'
+                cutout: '10%',
+                hoverBackgroundColor: 'rgba(124, 252, 0, 0.8)',
             }]
         };
         // легенда и конфиги
@@ -88,6 +89,9 @@
                 plugins: {
                     legend: {
                         display: false,
+                    },
+                    tooltip: {
+                        displayColors: false
                     }
                 },
                 aspectRatio: 1
@@ -172,6 +176,9 @@
                     legend: {
                         display: false,
                     },
+                    tooltip: {
+                        displayColors: false
+                    },
                     datalabels: {
                         anchor: 'center',
                         display: 'auto',
@@ -198,19 +205,6 @@
             plugins: [ChartDataLabels]
         };
 
-        // const FlowerConfig = {
-        //     type: 'pie',
-        //     data,
-        //     options: {
-        //         parsing: {
-        //             key: 'amount.persent'
-        //         },
-        //         aspectRatio: 3,
-        //         plugins: {
-        //             legend: {
-        //                 display: false,
-        //             }}}
-        // };
 
         // MIBIL CONFIG !!!!! ctx M !!!!
         const ctx_m = document.getElementById('SunChart_m');
@@ -232,7 +226,6 @@
 
 
     </script>
-
     <!-- конец Мобильный второй блок в  сайте -->
 
 
